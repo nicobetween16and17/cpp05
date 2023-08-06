@@ -10,29 +10,28 @@ class Form{
 
 	public:
 		Form();
-		virtual ~Form();
+		~Form();
 		Form(const std::string name, const int gradeToSign, const int gradeToX);
-		int getGradeToSign();
-		int getGradeToX();
-		bool isSigned();
-		void beSigned(Bureaucrat &b);
-		Form &operator=(Form &b);
-		Form(Form &b);
-		const std::string getName();
+		Form &operator=(const Form &b);
+		Form(const Form &b);
+
+		const std::string getName() const;
+		int getGradeToSign() const;
+		int getGradeToX() const;
+		bool isSigned() const;
+
+		void beSigned(const Bureaucrat &b);
+
+
+
 		class GradeTooLowException: public std::exception{
 		public:
-			const char * what () const throw()
-			{
-				return "GradeTooLowException";
-			}
+			const char * what () const throw(){return "GradeTooLowException";}
 		};
 		class GradeTooHighException: public std::exception{
 		public:
-			const char * what () const throw()
-			{
-				return "GradeTooHighException";
-			}
+			const char * what () const throw() {return "GradeTooHighException";}
 		};
 };
 
-std::ostream &operator<<(std::ostream &out, Form &b);
+std::ostream &operator<<(std::ostream &out, const Form &b);

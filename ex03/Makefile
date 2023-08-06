@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Intern
 
 CC    = c++
 
@@ -28,6 +28,10 @@ BOLDWHITE    = \033[1m\033[37m
 SRC = Bureaucrat.cpp\
 			main.cpp\
 			Form.cpp\
+			PresidentialPardonForm.cpp\
+			RobotomyRequestForm.cpp\
+			ShrubberyCreationForm.cpp\
+			Intern.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 

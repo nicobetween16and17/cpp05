@@ -6,7 +6,7 @@ const std::string Form::getName() const{
 
 
 Form::Form(): _name("blank"),  _gradeToSign(150), _gradeToX(150), _signed(false){
-	std::cout << this << " is created\n";
+	std::cout << *this << " is created\n";
 }
 
 Form::Form(const std::string name, const int gradeToSign, const int gradeToX): _name(name), _gradeToSign(gradeToSign), _gradeToX(gradeToX){
@@ -21,7 +21,7 @@ Form::Form(const std::string name, const int gradeToSign, const int gradeToX): _
 	}
 }
 Form::~Form(){
-	std::cout << (const Form&)*this << " is obsolete and therefore is thrown to the trashcan as his place always should have been\n";
+	std::cout << *this << " is obsolete and therefore is thrown to the trashcan as his place always should have been\n";
 }
 
 Form::Form(const Form &b): _name(b._name), _gradeToSign(b._gradeToSign), _gradeToX(b._gradeToX), _signed(b._signed){
@@ -36,11 +36,11 @@ Form &Form::operator=(const Form &b){
 }
 
 
-int Form::getGradeToX() const{
+int Form::getGradeToX() const {
 	return this->_gradeToX;
 }
 
-int Form::getGradeToSign() const {
+int Form::getGradeToSign()const{
 	return this->_gradeToSign;
 }
 
@@ -51,7 +51,11 @@ void Form::beSigned(const Bureaucrat &b){
 		this->_signed = true;
 }
 
-bool Form::isSigned() const { return this->_signed;}
+bool Form::isSigned() const{ return this->_signed;}
+
+void Form::execute(const Bureaucrat &executor) const{
+	(void)executor;
+}
 
 std::ostream &operator<<(std::ostream &out, const Form &b)
 {
@@ -60,3 +64,11 @@ std::ostream &operator<<(std::ostream &out, const Form &b)
 	", " << (b.isSigned()? "signed]" : "unsigned]");
 	return out;
 }
+//
+//void Form::setGradeToSign(const int gts) {_gradeToSign = gts;}
+//
+//int Form::setGradeToX(const int gtx) {_gradeToX = gtx;}
+//
+//void Form::setName(const std::string name) {_name = name;}
+//
+//void Form::setSigned(bool b) {_signed = b;}

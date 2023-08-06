@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = AForm
 
 CC    = c++
 
@@ -27,9 +27,9 @@ BOLDWHITE    = \033[1m\033[37m
 
 SRC = Bureaucrat.cpp\
 			main.cpp\
-			AForm.cpp\
+			Form.cpp\
 			PresidentialPardonForm.cpp\
-			RobotomyRequestFrom.cpp\
+			RobotomyRequestForm.cpp\
 			ShrubberyCreationForm.cpp
 
 OBJ = $(SRC:%.cpp=%.o)

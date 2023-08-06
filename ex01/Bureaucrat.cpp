@@ -1,10 +1,10 @@
 #include "Bureaucrat.hpp"
 
-const std::string Bureaucrat::getName(){
+const std::string Bureaucrat::getName() const{
 	return this->_name;
 }
 
-int Bureaucrat::getGrade(){
+int Bureaucrat::getGrade() const{
 	return this->grade;
 }
 
@@ -25,11 +25,11 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name){
 	}
 }
 Bureaucrat::~Bureaucrat(){
-	std::cout << *this << " died from overworking, it was already passed 17\n";
+	std::cout << (const Bureaucrat&)*this << " died from overworking, it was already passed 17\n";
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat &b): _name(b._name){
-	this->grade = b.grade;
+Bureaucrat::Bureaucrat(const Bureaucrat &b): _name(b._name){
+	this->grade = b.getGrade();
 }
 
 void Bureaucrat::signForm(Form &f){
@@ -45,10 +45,10 @@ void Bureaucrat::signForm(Form &f){
 	std::cout << *this << " signed " << f << std::endl;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat &b){
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &b){
 	if (this != &b)
 	{
-		this->grade = b.grade;
+		this->grade = b.getGrade();
 	}
 	return *this;
 }
@@ -73,8 +73,8 @@ void Bureaucrat::downgrade(){
 		this->grade = grade;
 }
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &b)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 {
-	out << b.getName() << ", bureaucrat grade " << b.getGrade();
+	out << b.getName() << ": bureaucrat grade " << b.getGrade();
 	return out;
 }
